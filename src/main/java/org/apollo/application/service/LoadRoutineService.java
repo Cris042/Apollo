@@ -3,8 +3,8 @@ package org.apollo.application.service;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.apollo.domain.entities.Routine;
-import org.apollo.application.port.in.ILoadRoutineServicePort;
-import org.apollo.application.port.out.ILoadRoutinePort;
+import org.apollo.application.port.in.service.ILoadRoutineServicePort;
+import org.apollo.application.port.out.persistence.ILoadRoutinePersistencePort;
 
 import java.util.List;
 import java.util.UUID;
@@ -13,7 +13,7 @@ import java.util.UUID;
 public class LoadRoutineService implements ILoadRoutineServicePort {
 
     @Inject
-    private ILoadRoutinePort loadRoutinePort;
+    private ILoadRoutinePersistencePort loadRoutinePort;
 
     @Override
     public Routine loadRoutineByName(Long id) {

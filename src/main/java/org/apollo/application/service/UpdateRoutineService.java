@@ -4,18 +4,18 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import org.apollo.domain.entities.Routine;
-import org.apollo.application.port.in.IUpdateRoutineServicePort;
-import org.apollo.application.port.out.ILoadRoutinePort;
-import org.apollo.application.port.out.ISaveRoutinePort;
+import org.apollo.application.port.in.service.IUpdateRoutineServicePort;
+import org.apollo.application.port.out.persistence.ILoadRoutinePersistencePort;
+import org.apollo.application.port.out.persistence.ISavePersistenceRoutinePort;
 
 @ApplicationScoped
 public class UpdateRoutineService implements IUpdateRoutineServicePort {
 
     @Inject
-    private ILoadRoutinePort loadRoutinePort;
+    private ILoadRoutinePersistencePort loadRoutinePort;
 
     @Inject
-    private ISaveRoutinePort saveRoutinePort;
+    private ISavePersistenceRoutinePort saveRoutinePort;
 
     @Override
     @Transactional

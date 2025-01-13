@@ -4,18 +4,18 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import org.apollo.domain.entities.Routine;
-import org.apollo.application.port.in.IDeleteRoutineServicePort;
-import org.apollo.application.port.out.IDeleteRoutinePort;
-import org.apollo.application.port.out.ILoadRoutinePort;
+import org.apollo.application.port.in.service.IDeleteRoutineServicePort;
+import org.apollo.application.port.out.persistence.IDeleteRoutinePersistencePort;
+import org.apollo.application.port.out.persistence.ILoadRoutinePersistencePort;
 
 @ApplicationScoped
 public class DeleteRoutineService implements IDeleteRoutineServicePort {
 
     @Inject
-    private ILoadRoutinePort loadRoutinePort;
+    private ILoadRoutinePersistencePort loadRoutinePort;
 
     @Inject
-    private IDeleteRoutinePort deleteRoutinePort;
+    private IDeleteRoutinePersistencePort deleteRoutinePort;
 
     @Override
     @Transactional

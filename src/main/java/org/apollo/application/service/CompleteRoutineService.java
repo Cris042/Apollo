@@ -5,10 +5,10 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import org.apollo.domain.entities.Routine;
 import org.apollo.domain.entities.RoutineHistory;
-import org.apollo.application.port.in.ICompleteRoutineServicePort;
-import org.apollo.application.port.out.ILoadRoutinePort;
-import org.apollo.application.port.out.IRoutineHistoryPort;
-import org.apollo.application.port.out.ISaveRoutinePort;
+import org.apollo.application.port.in.service.ICompleteRoutineServicePort;
+import org.apollo.application.port.out.persistence.ILoadRoutinePersistencePort;
+import org.apollo.application.port.out.persistence.IRoutineHistoryPersistencePort;
+import org.apollo.application.port.out.persistence.ISavePersistenceRoutinePort;
 
 import java.time.LocalDateTime;
 
@@ -16,13 +16,13 @@ import java.time.LocalDateTime;
 public class CompleteRoutineService implements ICompleteRoutineServicePort {
 
     @Inject
-    private ILoadRoutinePort loadRoutinePort;
+    private ILoadRoutinePersistencePort loadRoutinePort;
 
     @Inject
-    private ISaveRoutinePort saveRoutinePort;
+    private ISavePersistenceRoutinePort saveRoutinePort;
 
     @Inject
-    private IRoutineHistoryPort saveRoutineHistoryPort;
+    private IRoutineHistoryPersistencePort saveRoutineHistoryPort;
 
     @Override
     @Transactional

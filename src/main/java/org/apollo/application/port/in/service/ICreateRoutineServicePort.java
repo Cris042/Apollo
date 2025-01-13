@@ -1,4 +1,4 @@
-package org.apollo.application.port.in;
+package org.apollo.application.port.in.service;
 
 import org.apollo.domain.entities.Routine;
 

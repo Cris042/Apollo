@@ -1,7 +1,7 @@
-package org.apollo.application.port.out;
+package org.apollo.application.port.out.persistence;
 
 import org.apollo.domain.entities.RoutineHistory;
 
-public interface IRoutineHistoryPort {
+public interface IRoutineHistoryPersistencePort {
     RoutineHistory saveRoutineHistory(RoutineHistory routineHistory);
 }

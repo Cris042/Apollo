@@ -1,4 +1,4 @@
-package org.apollo.adapters.in.web;
+package org.apollo.adapters.in.rest;
 
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
@@ -12,7 +12,7 @@ import org.eclipse.microprofile.jwt.JsonWebToken;
 @Path("/users")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class UserController {
+public class UserRestController {
 
     @Inject
     JsonWebToken jwt;

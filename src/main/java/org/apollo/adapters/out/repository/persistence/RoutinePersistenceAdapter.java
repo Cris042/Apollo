@@ -1,19 +1,20 @@
-package org.apollo.adapters.out.repository;
+package org.apollo.adapters.out.repository.persistence;
 
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import org.apollo.adapters.out.repository.persistence.jpa.JpaRoutineRepository;
 import org.apollo.domain.entities.Routine;
-import org.apollo.application.port.out.IDeleteRoutinePort;
-import org.apollo.application.port.out.ILoadRoutinePort;
-import org.apollo.application.port.out.ISaveRoutinePort;
+import org.apollo.application.port.out.persistence.IDeleteRoutinePersistencePort;
+import org.apollo.application.port.out.persistence.ILoadRoutinePersistencePort;
+import org.apollo.application.port.out.persistence.ISavePersistenceRoutinePort;
 
 import java.util.List;
 import java.util.UUID;
 
 
 @ApplicationScoped
-public class RoutinePersistenceAdapter implements ILoadRoutinePort, ISaveRoutinePort, IDeleteRoutinePort {
+public class RoutinePersistenceAdapter implements ILoadRoutinePersistencePort, ISavePersistenceRoutinePort, IDeleteRoutinePersistencePort {
 
     @Inject
     JpaRoutineRepository jpaRoutineRepository;

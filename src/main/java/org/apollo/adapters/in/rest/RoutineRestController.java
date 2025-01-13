@@ -1,4 +1,4 @@
-package org.apollo.adapters.in.web;
+package org.apollo.adapters.in.rest;
 
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
@@ -7,11 +7,11 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.apollo.domain.entities.Routine;
-import org.apollo.application.port.in.ICompleteRoutineServicePort;
-import org.apollo.application.port.in.ICreateRoutineServicePort;
-import org.apollo.application.port.in.IDeleteRoutineServicePort;
-import org.apollo.application.port.in.IUpdateRoutineServicePort;
-import org.apollo.application.port.out.ILoadRoutinePort;
+import org.apollo.application.port.in.service.ICompleteRoutineServicePort;
+import org.apollo.application.port.in.service.ICreateRoutineServicePort;
+import org.apollo.application.port.in.service.IDeleteRoutineServicePort;
+import org.apollo.application.port.in.service.IUpdateRoutineServicePort;
+import org.apollo.application.port.out.persistence.ILoadRoutinePersistencePort;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -36,10 +36,10 @@ public class RoutineRestController {
     ICompleteRoutineServicePort completeRoutineServicePort;
 
     @Inject
-    ILoadRoutinePort loadRoutinePort;
+    ILoadRoutinePersistencePort loadRoutinePort;
 
     @GET
-    @RolesAllowed("user")
+
     public List<Routine> getAllRoutines(@QueryParam("userId") UUID userId) {
         return loadRoutinePort.loadAllRoutines(userId);
     }
@@ -52,7 +52,7 @@ public class RoutineRestController {
     }
 
     @POST
-    @RolesAllowed("user")
+
     public Response createRoutine(Routine routine) {
         Routine created = createRoutineServicePort.createRoutine(routine);
         return Response.status(Response.Status.CREATED).entity(created).build();
