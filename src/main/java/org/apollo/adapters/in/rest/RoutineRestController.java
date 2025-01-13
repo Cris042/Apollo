@@ -52,7 +52,7 @@ public class RoutineRestController {
     }
 
     @POST
-
+    @RolesAllowed("user")
     public Response createRoutine(Routine routine) {
         Routine created = createRoutineServicePort.createRoutine(routine);
         return Response.status(Response.Status.CREATED).entity(created).build();
