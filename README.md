@@ -1,4 +1,4 @@
-# Treino API
+# Apollo
 
 Este projeto implementa uma API REST para gerenciamento de rotinas de treino, seguindo os princípios da arquitetura hexagonal e utilizando Java com o framework Quarkus. O projeto inclui autenticação e autorização com Keycloak e persistência de dados no PostgreSQL.
 
@@ -27,19 +27,21 @@ As principais dependências utilizadas no projeto incluem:
 A estrutura do projeto segue os princípios da arquitetura hexagonal:
 
 ```
-├── config
-├── core
+├── infrastructure
+├── domain
+│   ├── entities
+│
+├── application
 │   ├── port
 │   │   ├── in
 │   │   └── out
-│   ├── domain  
-│   │   └── models
-│   │   └── repository
+│   ├── service 
 │   │   
-│   └── usecase
 ├── adapters
-│   ├── adapters
-│   │   ├── web
+│   ├── in
+│   │    ├── web
+│   ├── out
+│   │    ├── repository
 ```
 
 ## Endpoints da API
@@ -54,11 +56,55 @@ A estrutura do projeto segue os princípios da arquitetura hexagonal:
 - **DELETE /api/routines/{id}?userId={userId}:** Remove uma rotina.
 - **POST /api/routines/{id}/complete?startTime={startTime}?endTime={endTime}:** Finaliza uma rotina e calcula o volume load.
 
+### Exemplo da Criação da Rotina
+
+**Body:**
+```json
+{
+  "name": "Rotina de Treino - Segunda-feira",
+  "userId": "7aDA2b3C-e3dA-Aacf-C470-7CD25dB2b7c7",
+  "exercises": [
+    {
+      "name": "Supino Reto",
+      "repetitions": 10,
+      "load": 80,
+      "restTime": 60,
+      "series": 4
+    },
+    {
+      "name": "Agachamento Livre",
+      "repetitions": 12,
+      "load": 100,
+      "restTime": 90,
+      "series": 3
+    },
+    {
+      "name": "Remada Curvada",
+      "repetitions": 10,
+      "load": 70,
+      "restTime": 60,
+      "series": 4
+    }
+  ]
+}
+```
+
 ## Como Executar
+
+### Passos
+
+1. Inicie a aplicação:
+   ```bash
+   mvnw quarkus:dev
+   ```
 
 ### Pré-requisitos
 
-- Docker e Docker Compose
+- Docker
 - Java 21 
 - Maven
+
+### Doc
+
+- http://localhost:8080/q/swagger-ui/
 
