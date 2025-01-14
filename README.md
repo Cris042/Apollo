@@ -13,11 +13,6 @@ Este projeto implementa uma API REST para gerenciamento de rotinas de treino, se
 
 As principais dependências utilizadas no projeto incluem:
 
-- `quarkus-resteasy-reactive`
-- `quarkus-hibernate-orm-panache`
-- `quarkus-jdbc-postgresql`
-- `quarkus-keycloak-authorization`
-- `quarkus-smallrye-openapi`
 - `docker`
 - `keycloak`
 - `postgresql`
